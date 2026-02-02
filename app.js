@@ -7,6 +7,8 @@ var logger = require('morgan');
 
 var indexRouter = require('./app_server/routes/index');
 var travlrRouter = require('./app_server/routes/Travlr');
+require('./app_server/models/db');
+
 
 var app = express();
 
