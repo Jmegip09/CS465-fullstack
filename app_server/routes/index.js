@@ -1,9 +1,9 @@
+// app_server/routes/index.js
 const express = require('express');
 const router = express.Router();
 const ctrlMain = require('../controllers/main');
-const travelController = require('../controllers/Travlr');
 
-router.get('/api/trips', travelController.tripsList);
+// Home page
 router.get('/', ctrlMain.renderIndex);
 
 module.exports = router;
