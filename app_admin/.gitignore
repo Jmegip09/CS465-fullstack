@@ -11,6 +11,9 @@
 npm-debug.log
 yarn-error.log
 
+#dotenv enviroment virables files
+.env
+
 # IDEs and editors
 .idea/
 .project
@@ -21,6 +24,7 @@ yarn-error.log
 *.sublime-workspace
 
 # Visual Studio Code
+.vs
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
@@ -42,3 +46,4 @@ __screenshots__/
 # System files
 .DS_Store
 Thumbs.db
+

@@ -1,11 +1,12 @@
 <div class="container">
   <div class="row mb-3">
     <div class="col-12">
-      <button class="btn btn-primary" routerLink="/add-trip">Add Trip</button>
+      <div *ngIf="isLoggedIn()">
+        <button (click)="addTrip()" class="btn btn-primary">Add Trip</button>
+      </div>
     </div>
   </div>
 </div>
-
 <div class="row">
   <div *ngFor="let trip of trips" class="col-3">
     <app-trip-card [trip]="trip"></app-trip-card>
