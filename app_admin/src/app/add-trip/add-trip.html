@@ -1,0 +1,14 @@
+<h2>Add Trip</h2>
+
+<form [formGroup]="tripForm" (ngSubmit)="onSubmit()">
+  <input formControlName="code" placeholder="Code">
+  <input formControlName="name" placeholder="Name">
+  <input formControlName="length" placeholder="Length">
+  <input formControlName="start" type="date">
+  <input formControlName="resort" placeholder="Resort">
+  <input formControlName="perPerson" placeholder="Price">
+  <input formControlName="image" placeholder="Image path">
+  <textarea formControlName="description" placeholder="Description"></textarea>
+
+  <button type="submit">Save</button>
+</form>
