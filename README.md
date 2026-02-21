@@ -4,6 +4,7 @@ Travlr Getaways is a full-stack travel booking application built using the MEAN 
 
 This project includes a public-facing website and an administrator Single-Page Application (SPA) for managing travel packages.
 
+Course Milestones: Development history is preserved in branches module1 through module7.
 ---
 
 ## Architecture
