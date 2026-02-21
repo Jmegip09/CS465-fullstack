@@ -2,7 +2,6 @@ import { Inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Trip } from '../models/trip';
-import { User } from '../models/user';
 import { AuthResponse } from '../models/auth-response';
 import { BROWSER_STORAGE } from '../storage';
 
@@ -40,22 +39,15 @@ export class TripDataService {
   }
 
   // Call to our /login endpoint, returns JWT
-  public login(user: User, passwd: string): Observable<AuthResponse> {
-    return this.handleAuthAPICall('login', user, passwd);
+  public login(credentials: { email: string; password: string }): Observable<AuthResponse> {
+    return this.http.post<AuthResponse>(`${this.baseUrl}/login`, credentials);
   }
 
   // Call to our /register endpoint, creates user and returns JWT
-  public register(user: User, passwd: string): Observable<AuthResponse> {
-    return this.handleAuthAPICall('register', user, passwd);
+  public register(credentials: { name: string; email: string; password: string }): Observable<AuthResponse> {
+    return this.http.post<AuthResponse>(`${this.baseUrl}/register`, credentials);
   }
-
-  // Helper method to process both login and register methods
-  public handleAuthAPICall(endpoint: string, user: User, passwd: string): Observable<AuthResponse> {
-    let formData = {
-      name: user.name,
-      email: user.email,
-      password: passwd
-    };
-    return this.http.post<AuthResponse>(this.baseUrl + '/' + endpoint, formData);
+  deleteTrip(tripCode: string) {
+    return this.http.delete(`${this.baseUrl}/trips/${tripCode}`);
   }
 }

@@ -29,7 +29,7 @@ function authenticateJWT(req, res, next) {
 
     const verified = jwt.verify(token, process.env.JWT_SECRET, (err, verified) => {
         if (err) {
-            return res.sendStatus(401).json('Token Validation Error!');
+            return res.sendStatus(401);
         }
         req.auth = verified;
     });
@@ -59,4 +59,12 @@ router
     .get(tripsController.tripsFindByCode)
     .put(authenticateJWT, tripsController.tripsUpdateTrip);
 
-module.exports = router;
+// DELETE
+router
+    .route('/trips/:tripCode')
+    .get(tripsController.tripsFindByCode)
+    .put(authenticateJWT, tripsController.tripsUpdateTrip)
+    .delete(authenticateJWT, tripsController.tripsDeleteTrip);
+
+
+module.exports = { tripsList, tripsFindByCode, tripsAddTrip, tripsUpdateTrip, tripsDeleteTrip };

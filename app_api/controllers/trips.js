@@ -47,6 +47,17 @@ const tripsAddTrip = async (req, res) => {
     }
 };
 
+// DELETE: /api/trips/:tripCode - delete a trip by code
+const tripsDeleteTrip = async (req, res) => {
+    try {
+        const deleted = await Trip.findOneAndDelete({ code: req.params.tripCode });
+        if (!deleted) return res.status(404).json({ message: 'Trip not found' });
+        return res.status(204).send(); // No content
+    } catch (err) {
+        return res.status(500).json({ message: 'Error deleting trip', error: err });
+    }
+};
+
 const tripsUpdateTrip = async (req, res) => {
     const tripCode = req.params.tripCode;
 
